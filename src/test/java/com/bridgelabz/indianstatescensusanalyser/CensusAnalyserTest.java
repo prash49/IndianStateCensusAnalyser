@@ -17,7 +17,8 @@ public class CensusAnalyserTest {
     private String INDIAN_CENSUS_INCORRECT_FILE_FORMAT = "./src/main/resources/IndiaStateCensusData.txt";
     private String INDIAN_CENSUS_WITHWRONG_DELIMITER = ".src/main/resources/IndiaStateCensusDataWithWrongDelimiter.csv";
 
-    private  String INIDAN_STATE_CSV_FILE_PATH = "./src/main/resources/IndiaStateCode.csv";
+    private String INIDAN_STATE_CSV_FILE_PATH = "./src/main/resources/IndiaStateCode.csv";
+
     //TC1.1
     @Test
     public void givenIndianCensusCSVFile_WhenLoad_ShouldReturnCorrectRecords() throws CensusAnalyserException {
@@ -63,15 +64,19 @@ public class CensusAnalyserTest {
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(CensusAnalyserException.class);
             censusAnalyser.loadIndiaCensusData(INDIAN_CENSUS_WITHWRONG_DELIMITER);
-        }
-        catch (CensusAnalyserException e) {
+        } catch (CensusAnalyserException e) {
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_WRONG_DELIMITER, e.type);
             e.printStackTrace();
         }
     }
 
-
-
+    // UC2 -  TC2.1
+    @Test
+    public void givenIndianStateCodeCSVFile_WhenLoad_ShouldReturnCorrectRecords() throws Exception {
+        CensusAnalyser censusAnalyser = new CensusAnalyser();
+        int count = censusAnalyser.loadIndianStateCodeData(INIDAN_STATE_CSV_FILE_PATH);
+        Assert.assertEquals(37, count);
+    }
 
 }
 
