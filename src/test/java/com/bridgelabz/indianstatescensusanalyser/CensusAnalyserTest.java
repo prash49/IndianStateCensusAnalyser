@@ -17,6 +17,7 @@ public class CensusAnalyserTest {
     private String INDIAN_CENSUS_INCORRECT_FILE_FORMAT = "./src/main/resources/IndiaStateCensusData.txt";
     private String INDIAN_CENSUS_WITHWRONG_DELIMITER = ".src/main/resources/IndiaStateCensusDataWithWrongDelimiter.csv";
 
+    private  String INIDAN_STATE_CSV_FILE_PATH = "./src/main/resources/IndiaStateCode.csv";
     //TC1.1
     @Test
     public void givenIndianCensusCSVFile_WhenLoad_ShouldReturnCorrectRecords() throws CensusAnalyserException {
@@ -68,6 +69,9 @@ public class CensusAnalyserTest {
             e.printStackTrace();
         }
     }
+
+
+
 
 }
 
